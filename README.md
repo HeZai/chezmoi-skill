@@ -4,7 +4,7 @@
 
 ---
 
-An intelligent dotfiles management assistant that makes configuration management simple, safe, and reproducible.
+An intelligent [chezmoi](https://github.com/twpayne/chezmoi) assistant that makes dotfiles management simple, safe, and reproducible.
 
 ## Features
 
@@ -87,7 +87,7 @@ Assistant: Detected hardcoded email
 
 ## Dependencies
 
-- chezmoi >= 2.0
+- chezmoi >= 2.0, < 3.0
 - git
 
 ## Learn More

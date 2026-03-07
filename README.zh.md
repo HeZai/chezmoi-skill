@@ -4,7 +4,7 @@
 
 ---
 
-智能 dotfiles 管理助手，让配置管理变得简单、安全、可复现。
+智能 [chezmoi](https://github.com/twpayne/chezmoi) 助手，让 dotfiles 管理变得简单、安全、可复现。
 
 ## 功能特性
 
@@ -87,7 +87,7 @@
 
 ## 依赖
 
-- chezmoi >= 2.0
+- chezmoi >= 2.0, < 3.0
 - git
 
 ## 了解更多
