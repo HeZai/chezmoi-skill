@@ -1,0 +1,35 @@
+# Claude Code local config
+.claude/settings.local.json
+.claude/*.local.json
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Editor config
+.idea/
+.vscode/
+*.sublime-*
+
+# Log files
+*.log
+logs/
+
+# Temp files
+tmp/
+temp/
+*.tmp
+*.cache
+
+# Backup files
+*.bak
+*.backup
+*.orig
+
+# Other
+.env.local
+.env.*.local
+
