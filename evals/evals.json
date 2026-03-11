@@ -1,0 +1,122 @@
+{
+  "skill_name": "chezmoi",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Add my .zshrc file to chezmoi",
+      "expected_output": "Execute or suggest 'chezmoi add ~/.zshrc', explain the file mapping (dot_zshrc), and offer next steps (edit template, commit changes)",
+      "files": [],
+      "assertions": [
+        {
+          "name": "mentions_chezmoi_add",
+          "type": "contains",
+          "target": "output",
+          "value": "chezmoi add"
+        },
+        {
+          "name": "explains_source_mapping",
+          "type": "contains_any",
+          "target": "output",
+          "value": ["dot_zshrc", "source", "mapped"]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I got a new laptop, how do I set up my dotfiles from my GitHub repo github.com/johndoe/dotfiles",
+      "expected_output": "Guide through initialization workflow: chezmoi init --apply, preview changes with diff, then apply. Ask for confirmation before applying.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "mentions_init_command",
+          "type": "contains",
+          "target": "output",
+          "value": "chezmoi init"
+        },
+        {
+          "name": "mentions_preview_or_diff",
+          "type": "contains_any",
+          "target": "output",
+          "value": ["diff", "preview", "chezmoi status"]
+        },
+        {
+          "name": "safe_execution_guidance",
+          "type": "contains_any",
+          "target": "output",
+          "value": ["confirm", "check", "review", "step by step"]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "My gitconfig has my work email hardcoded, can you help me make it a template so I can use different emails on different machines?",
+      "expected_output": "Explain template approach: add email to chezmoi.toml data, convert dot_gitconfig to .tmpl with conditionals based on hostname or custom data fields",
+      "files": [
+        {
+          "path": "dot_gitconfig",
+          "content": "[user]\n    name = John Doe\n    email = john@company.com\n"
+        }
+      ],
+      "assertions": [
+        {
+          "name": "mentions_template_creation",
+          "type": "contains_any",
+          "target": "output",
+          "value": [".tmpl", "template", "{{ .email }}"]
+        },
+        {
+          "name": "mentions_chezmoi_toml_data",
+          "type": "contains_any",
+          "target": "output",
+          "value": ["chezmoi.toml", "[data]", "template data"]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "chezmoi apply gave me an error: 'template: dot_zshrc.tmpl:15: function not defined'. What should I do?",
+      "expected_output": "Diagnose template error, suggest using 'chezmoi cat' to view render result, check function spelling, explain common fixes",
+      "files": [],
+      "assertions": [
+        {
+          "name": "diagnoses_template_error",
+          "type": "contains_any",
+          "target": "output",
+          "value": ["template", "syntax", "function", "error"]
+        },
+        {
+          "name": "suggests_chezmoi_cat",
+          "type": "contains",
+          "target": "output",
+          "value": "chezmoi cat"
+        },
+        {
+          "name": "provides_fix_suggestions",
+          "type": "contains_any",
+          "target": "output",
+          "value": ["check", "fix", "correct", "spelling"]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Check my chezmoi status and show me what files have changed",
+      "expected_output": "Execute chezmoi status and chezmoi diff to show current state and differences",
+      "files": [],
+      "assertions": [
+        {
+          "name": "executes_status_command",
+          "type": "contains",
+          "target": "output",
+          "value": "chezmoi status"
+        },
+        {
+          "name": "shows_diff_or_changes",
+          "type": "contains_any",
+          "target": "output",
+          "value": ["chezmoi diff", "modified", "changed", "differences"]
+        }
+      ]
+    }
+  ]
+}

@@ -1,22 +1,6 @@
 ---
 name: chezmoi
-description: "Intelligent dotfiles management assistant. Helps users manage, sync, and backup configuration files. Supports the complete chezmoi workflow: initialization, adding files, applying changes, template authoring, and troubleshooting. Automatically recognizes configuration management intents, provides suggestions, and executes operations."
-triggers:
-  commands: ["/chezmoi", "/dotfiles"]
-  keywords:
-    - "chezmoi"
-    - "dotfiles"
-    - "config sync"
-    - "backup config"
-    - "manage config"
-    - "sync config"
-  patterns:
-    - "manage.*config"
-    - "sync.*(zsh|bash|vim|git|ssh)"
-    - "backup.*(zshrc|bashrc|vimrc)"
-    - "dotfiles.*(init|add|apply|update)"
-    - "chezmoi.*(add|apply|status|diff)"
-    - "template.*chezmoi"
+description: "Use this skill whenever the user mentions chezmoi, dotfiles, or managing config files across machines—even if they don't say 'chezmoi' explicitly. Trigger for: syncing zshrc/bashrc/vimrc/gitconfig, backing up or restoring configs, templating configs with per-machine values, setting up a new machine from a dotfiles repo, or any chezmoi error. When in doubt, use this skill—it covers the full chezmoi workflow: add/apply/status/diff/edit/template/init."
 ---
 
 # Chezmoi Intelligent Assistant
@@ -169,16 +153,20 @@ When user reports issues:
 
 ## Knowledge Base References
 
-- `knowledge/chezmoi-concepts.md` - Core concepts
-- `knowledge/template-functions.md` - Template functions
-- `knowledge/best-practices.md` - Best practices
-- `examples/init-workflow.md` - Initialization examples
-- `examples/template-guide.md` - Template guide
-- `examples/troubleshooting.md` - Troubleshooting
+Read the relevant file when the user's question goes deeper than the examples in this skill:
+
+| Situation | Read this file |
+|-----------|---------------|
+| User asks "what is chezmoi" or basic concepts | `knowledge/chezmoi-concepts.md` |
+| Template syntax questions (`{{ }}`, conditionals, functions) | `knowledge/template-functions.md` |
+| "Best practice" or "how should I organize" questions | `knowledge/best-practices.md` |
+| New machine setup / `chezmoi init` workflow | `examples/init-workflow.md` |
+| Converting files to templates, hostname conditionals | `examples/template-guide.md` |
+| Errors, unexpected behavior, debugging | `examples/troubleshooting.md` |
 
 ## Output Standards
 
-1. **English primary**: All output in English, keep key terms
+1. **English output**: All responses in English, keep technical terms
 2. **Code highlighting**: Commands in code blocks, key parameters bold
 3. **Clear steps**: Complex operations broken into numbered steps
 4. **Confirmation prompts**: Clearly state what will be done before execution
